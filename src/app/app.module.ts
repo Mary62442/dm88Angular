@@ -6,13 +6,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { RouterComponent } from './components/router/router.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 @NgModule({
   declarations: [   
     HomeComponent,
     NavbarComponent,
     AboutComponent,
-    RouterComponent
+    RouterComponent,
+    ContactsComponent
     
   ],
   imports: [

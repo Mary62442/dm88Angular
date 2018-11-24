@@ -4,7 +4,7 @@
 
 .horizontal-nav {
   height:3em;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
+  box-shadow: 0 3px 10px rgba(black,0.2); 
   background-color:white;
   position:fixed;
   z-index:900;
@@ -20,6 +20,7 @@
   width:12em;
   height:100vh;
   position:absolute;
+  box-shadow: 3px 0px 10px rgba(black,0.2); 
   top:0;
   transition:left 0.2s ease-in;
   z-index:899;
@@ -37,7 +38,7 @@
         font-weight:bold;
         position:relative;
         &:hover {
-          color:$color-secondary-2-1;
+          color:$color-secondary-2-2;
         }
         &:before {
           bottom:0;
