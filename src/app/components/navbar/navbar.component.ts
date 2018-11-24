@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TimelineMax} from 'gsap';
 
 @Component({
@@ -6,15 +6,25 @@ import { TimelineMax} from 'gsap';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
   menuIsOpen:boolean = false;
+  casesMenuIsOpen:boolean = false;
+
+  toggleCasesMenu = ():void => {
+    if (this.casesMenuIsOpen) {
+      this.casesMenuIsOpen = false;      
+      return;
+    }
+    this.casesMenuIsOpen = true;
+    
+  }
 
   toggleMenu = ():void => {
     if (this.menuIsOpen) {
-      this.menuIsOpen = false
+      this.menuIsOpen = false;
       this.fromXMenu();
       return;
     }
@@ -26,7 +36,7 @@ export class NavbarComponent implements OnInit {
     if (this.menuIsOpen) return;
    
     let waver = new TimelineMax();
-  waver.staggerTo("#burger > rect", 0.2, {x:"20px", yoyo:true, repeat:2, ease:"ease-out"}, "-0.1")
+  waver.staggerTo("#burger > rect", 0.2, {x:"20px", yoyo:true, repeat:2, ease:"ease-out"},"-0.1")
   .staggerTo("#burger > rect", 0.2, {x:"0",ease:"ease-out"}, "-0.1")
  }  
 
@@ -47,5 +57,14 @@ export class NavbarComponent implements OnInit {
 
  ngOnInit() {
   }
+ngAfterViewInit() {
+  var compass = new TimelineMax({ease:"linear"});
 
+  compass
+    .from("#small-points", 0.5, {scale:0, opacity:0,transformOrigin:"center", ease:Back.easeOut})
+    .from("#big-points", 0.5, {scale:0, opacity:0,transformOrigin:"center", ease:Back.easeOut})
+    .from("#center", 0.2, {scale:0, transformOrigin:"center", ease:Back.easeOut})
+    .from("#rounds", 0.3, {scale:0.7, transformOrigin:"center", opacity:0})
+
+}
 }

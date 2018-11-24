@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import {TimelineMax} from 'gsap';
 
 @Component({
@@ -6,20 +6,41 @@ import {TimelineMax} from 'gsap';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor() { }
-  ngOnInit() {}
+  @ViewChild('cityOutline') cityOutline: ElementRef;
+  constructor() {}
+  outline:any; 
+  outlineLength:number;
+
+  ngOnInit() {
+    this.outline = this.cityOutline.nativeElement;
+    this.outlineLength = this.outline.getTotalLength();
+  }
+
+  outlineScroll = () => {
+    let scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+    let drawLength = this.outlineLength * scrollPercentage;
+    this.outline.style.strokeDashoffset = this.outlineLength - drawLength;
+    
+    if (scrollPercentage >= 0.99) {
+      this.outline.style.strokeDasharray = "none";
+      
+    } else {
+      this.outline.style.strokeDasharray = this.outlineLength + ' ' + this.outlineLength;
+    }
+  }
 
   ngAfterViewInit() {
-    var tl = new TimelineMax({ease:"linear"});
+    this.outline.style.strokeDasharray = this.outlineLength + ' ' + this.outlineLength;
+    this.outline.style.strokeDashoffset = this.outlineLength;
+    window.addEventListener("scroll", this.outlineScroll);
+  }
 
-    tl
-    .from("#small-points", 0.5, {scale:0, opacity:0,transformOrigin:"center", ease:Back.easeOut})
-    .from("#big-points", 0.5, {scale:0, opacity:0,transformOrigin:"center", ease:Back.easeOut})
-    .from("#center", 0.2, {scale:0, transformOrigin:"center", ease:Back.easeOut})
-    .from("#rounds", 0.3, {scale:0.7, transformOrigin:"center", opacity:0})
+  
 
+  ngOnDestroy() {
+    window.removeEventListener("scroll", this.outlineScroll)
   }
 
 }
