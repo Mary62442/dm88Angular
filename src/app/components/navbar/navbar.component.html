@@ -1,0 +1,66 @@
+<nav class="horizontal-nav">
+  <button (mouseenter)="waverMenu()" (click) = "toggleMenu()" class="button-menu">   
+    <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width=""
+   height="100%"
+   viewBox="0 0 139.73675 146.59532"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (d244b95, 2018-08-02)"
+   sodipodi:docname="menu-burger.svg">
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.417732,-57.995225)">
+    <g
+       id="burger"
+       transform="matrix(0.84210527,0,0,0.99386503,5.9080628,1.0711077)">
+      <rect
+         ry="6.9490075"
+         y="87.460686"
+         x="37.417732"
+         height="13.898015"
+         width="142.18739"
+         id="rect815"
+         style="opacity:0.98999999;fill:#037899;fill-opacity:1;stroke:none;stroke-width:0.47362456;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill" />
+      <rect
+         style="opacity:0.98999999;fill:#17abd5;fill-opacity:1;stroke:none;stroke-width:0.47362456;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill"
+         id="rect821"
+         width="142.18739"
+         height="13.898015"
+         x="37.417732"
+         y="124.34388"
+         ry="6.9490075" />
+      <rect
+         ry="6.9490075"
+         y="160.69254"
+         x="37.417732"
+         height="13.898015"
+         width="142.18739"
+         id="rect823"
+         style="opacity:0.98999999;fill:#037899;fill-opacity:1;stroke:none;stroke-width:0.47362456;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:markers stroke fill" />
+    </g>
+  </g>
+</svg>
+    </button>
+  <i></i>
+</nav>
+<nav class ="vertical-nav" [ngStyle]="{'left': menuIsOpen ? '0' : '-12em' }">
+<ul>
+  <li><a (click) = "toggleMenu()" routerLink="/home">Home</a></li>
+  <li><a (click) = "toggleMenu()" routerLink="/about">About</a></li>
+  <li><a routerLink="">Case Studies</a></li>
+  <li><a (click) = "toggleMenu()" routerLink="">Contacts</a></li>
+</ul>
+</nav>
+<div (click) = "toggleMenu()" class="unfocus" [ngStyle]="{'display': menuIsOpen ? 'block' : 'none' }"></div>
