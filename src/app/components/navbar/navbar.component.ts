@@ -44,13 +44,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   toXMenu = ():void => {
     let x = new TimelineMax();
     x.to("#burger > rect:nth-of-type(2)", 0.2, {scaleX:0})
-    .to("#burger > rect:first-of-type", 0.2, {rotation:"32deg", y:"-10px", scaleX:"1.1", tranformOrigin: "left"})
-    .to("#burger > rect:last-of-type", 0.2, {scaleX:"1.1",rotation:"-32deg", tranformOrigin: "left"})
+    .to("#burger > rect:first-of-type", 0.2, {rotation:"32deg", y:"-10px", scaleX:"1.1", transformOrigin: "left"})
+    .to("#burger > rect:last-of-type", 0.2, {scaleX:"1.1",rotation:"-32deg", transformOrigin: "left"})
   }
   fromXMenu = ():void => {
     let x = new TimelineMax();
-    x.to("#burger > rect:first-of-type", 0.2, {rotation:"0", y:"0", scaleX:"1", tranformOrigin: "left"})
-    .to("#burger > rect:last-of-type", 0.2, {scaleX:"1",rotation:"0", tranformOrigin: "left"})
+    x.to("#burger > rect:first-of-type", 0.2, {rotation:"0", y:"0", scaleX:"1", transformOrigin: "left"})
+    .to("#burger > rect:last-of-type", 0.2, {scaleX:"1",rotation:"0", transformOrigin: "left"})
     .to("#burger > rect:nth-of-type(2)", 0.2, {scaleX:1})
   }
 
